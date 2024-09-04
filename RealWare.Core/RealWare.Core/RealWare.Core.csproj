@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<Configurations>Debug;Release;Debug_v7_1;Debug_v6_19;Debug_v5_52;Release_v5_52;Release_v6_19;Release_v7_1</Configurations>
+		<Configurations>Debug;Release;Debug_v7_1;Debug_v6_19;Debug_v5_52;Debug_v7;Debug_v6;Debug_v5;Release_v5_52;Release_v6_19;Release_v7_1;Release_v5;Release_v6;Release_v7</Configurations>
 	</PropertyGroup>
 
 	<!-- General Package Metadata -->
@@ -19,37 +19,67 @@
 
 	<!-- Define Conditional Symbols for specific realware versions Builds -->
 	<!-- v7 (Debug and Release) -->
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug_v7'">
+		<DefineConstants>DEBUG;v7</DefineConstants>
+		<Optimization>false</Optimization>
+		<OutputPath>bin\Debug\v7\</OutputPath>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)' == 'Release_v7'">
+		<DefineConstants>RELEASE;v7</DefineConstants>
+		<Optimization>true</Optimization>
+		<OutputPath>bin\Release\v7\</OutputPath>
+	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)' == 'Debug_v7_1'">
-		<DefineConstants>DEBUG;v7_1</DefineConstants>
+		<DefineConstants>DEBUG;v7;v7_1</DefineConstants>
 		<Optimization>false</Optimization>
 		<OutputPath>bin\Debug\v7_1\</OutputPath>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)' == 'Release_v7_1'">
-		<DefineConstants>RELEASE;v7_1</DefineConstants>
+		<DefineConstants>RELEASE;v7;v7_1</DefineConstants>
 		<Optimization>true</Optimization>
 		<OutputPath>bin\Release\v7_1\</OutputPath>
 	</PropertyGroup>
 
 	<!-- v6 (Debug and Release) -->
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug_v6'">
+		<DefineConstants>DEBUG;v6</DefineConstants>
+		<Optimization>false</Optimization>
+		<OutputPath>bin\Debug\v6\</OutputPath>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)' == 'Release_v6'">
+		<DefineConstants>RELEASE;v6</DefineConstants>
+		<Optimization>true</Optimization>
+		<OutputPath>bin\Release\v6_19\</OutputPath>
+	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)' == 'Debug_v6_19'">
-		<DefineConstants>DEBUG;v6_19</DefineConstants>
+		<DefineConstants>DEBUG;v6</DefineConstants>
 		<Optimization>false</Optimization>
 		<OutputPath>bin\Debug\v6_19\</OutputPath>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)' == 'Release_v6_19'">
-		<DefineConstants>RELEASE;v6_19</DefineConstants>
+		<DefineConstants>RELEASE;v6</DefineConstants>
 		<Optimization>true</Optimization>
-		<OutputPath>bin\Release\v6_19\</OutputPath>
+		<OutputPath>bin\Release\v6\</OutputPath>
 	</PropertyGroup>
 
 	<!-- v5 (Debug and Release) -->
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug_v5'">
+		<DefineConstants>DEBUG;v5</DefineConstants>
+		<Optimization>false</Optimization>
+		<OutputPath>bin\Debug\v5\</OutputPath>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)' == 'Release_v5'">
+		<DefineConstants>RELEASE;v5</DefineConstants>
+		<Optimization>true</Optimization>
+		<OutputPath>bin\Release\v5\</OutputPath>
+	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)' == 'Debug_v5_52'">
-		<DefineConstants>DEBUG;v5_52</DefineConstants>
+		<DefineConstants>DEBUG;v5;v5_52</DefineConstants>
 		<Optimization>false</Optimization>
 		<OutputPath>bin\Debug\v5_52\</OutputPath>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)' == 'Release_v5_52'">
-		<DefineConstants>RELEASE;v5_52</DefineConstants>
+		<DefineConstants>RELEASE;v5;v5_52</DefineConstants>
 		<Optimization>true</Optimization>
 		<OutputPath>bin\Release\v5_52\</OutputPath>
 	</PropertyGroup>
