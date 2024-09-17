@@ -2,13 +2,12 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<Configurations>Debug;Release;Debug_v7_1;Debug_v6_19;Debug_v5_52;Debug_v7;Debug_v6;Debug_v5;Release_v5_52;Release_v6_19;Release_v7_1;Release_v5;Release_v6;Release_v7</Configurations>
+		<Configurations>Debug;Release;Debug_v7;Debug_v6;Debug_v5;Release_v5;Release_v6;Release_v7</Configurations>
+		<PackageVersion>1.0.1</PackageVersion>
 	</PropertyGroup>
 
 	<!-- General Package Metadata -->
 	<PropertyGroup>
-		<PackageId>RealWare.Core</PackageId>
-		<Version>1.0.0</Version>
 		<Authors>Sean Redburn</Authors>
 		<Company>Tulsa County Assessor</Company>
 		<Description>Base objects for interacting with RealWare via RealWare API, services, or database.</Description>
@@ -28,8 +27,10 @@
 		<DefineConstants>RELEASE;v7</DefineConstants>
 		<Optimization>true</Optimization>
 		<OutputPath>bin\Release\v7\</OutputPath>
+		<PackageId>RealWare.Core.v7</PackageId>
+		<Version>$(PackageVersion)-v7</Version>
 	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)' == 'Debug_v7_1'">
+	<!--<PropertyGroup Condition="'$(Configuration)' == 'Debug_v7_1'">
 		<DefineConstants>DEBUG;v7;v7_1</DefineConstants>
 		<Optimization>false</Optimization>
 		<OutputPath>bin\Debug\v7_1\</OutputPath>
@@ -38,7 +39,7 @@
 		<DefineConstants>RELEASE;v7;v7_1</DefineConstants>
 		<Optimization>true</Optimization>
 		<OutputPath>bin\Release\v7_1\</OutputPath>
-	</PropertyGroup>
+	</PropertyGroup>-->
 
 	<!-- v6 (Debug and Release) -->
 	<PropertyGroup Condition="'$(Configuration)' == 'Debug_v6'">
@@ -49,9 +50,11 @@
 	<PropertyGroup Condition="'$(Configuration)' == 'Release_v6'">
 		<DefineConstants>RELEASE;v6</DefineConstants>
 		<Optimization>true</Optimization>
-		<OutputPath>bin\Release\v6_19\</OutputPath>
+		<OutputPath>bin\Release\v6\</OutputPath>
+		<PackageId>RealWare.Core.v6</PackageId>
+		<Version>$(PackageVersion)-v6</Version>
 	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)' == 'Debug_v6_19'">
+	<!--<PropertyGroup Condition="'$(Configuration)' == 'Debug_v6_19'">
 		<DefineConstants>DEBUG;v6</DefineConstants>
 		<Optimization>false</Optimization>
 		<OutputPath>bin\Debug\v6_19\</OutputPath>
@@ -60,7 +63,7 @@
 		<DefineConstants>RELEASE;v6</DefineConstants>
 		<Optimization>true</Optimization>
 		<OutputPath>bin\Release\v6\</OutputPath>
-	</PropertyGroup>
+	</PropertyGroup>-->
 
 	<!-- v5 (Debug and Release) -->
 	<PropertyGroup Condition="'$(Configuration)' == 'Debug_v5'">
@@ -72,8 +75,10 @@
 		<DefineConstants>RELEASE;v5</DefineConstants>
 		<Optimization>true</Optimization>
 		<OutputPath>bin\Release\v5\</OutputPath>
+		<PackageId>RealWare.Core.v5</PackageId>
+		<Version>$(PackageVersion)-v5</Version>
 	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)' == 'Debug_v5_52'">
+	<!--<PropertyGroup Condition="'$(Configuration)' == 'Debug_v5_52'">
 		<DefineConstants>DEBUG;v5;v5_52</DefineConstants>
 		<Optimization>false</Optimization>
 		<OutputPath>bin\Debug\v5_52\</OutputPath>
@@ -82,10 +87,11 @@
 		<DefineConstants>RELEASE;v5;v5_52</DefineConstants>
 		<Optimization>true</Optimization>
 		<OutputPath>bin\Release\v5_52\</OutputPath>
-	</PropertyGroup>
+	</PropertyGroup>-->
 
 	<!-- Package References -->
 	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
 	</ItemGroup>
 
