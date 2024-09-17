@@ -1340,8 +1340,7 @@ namespace RealWare.Core.API
                 throw new ArgumentNullException(nameof(taxYear));
 
             string url = $"api/applications/{taxYear}";
-            var response = await ExecuteWithResponseAsync(url, RWHttpVerb.POST, application, cancellationToken: cancellationToken).ConfigureAwait(false);
-            return getIdFromResponse(response);
+            return await ExecuteAsync<string>(url, RWHttpVerb.POST, application, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
