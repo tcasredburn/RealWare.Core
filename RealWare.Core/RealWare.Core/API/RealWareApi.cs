@@ -27,43 +27,6 @@ namespace RealWare.Core.API
         /// </summary>
         public bool HasRealWareAuthentication => !string.IsNullOrEmpty(Connection.ApiKey);
 
-        ///// <summary>
-        ///// Returns RealWare api detailed error message (if available). If not available, returns the <see cref="RWRestApiResult.Description"/>.
-        ///// </summary>
-        ///// <param name="result">Default is null and uses <see cref="RealWareApiBase.LastApiResult"/></param>
-        ///// <returns></returns>
-        //public string GetLastApiResultRealWareDetail(RWRestApiResult result = null)
-        //{
-        //    if (result == null)
-        //        result = LastApiResult;
-
-        //    if (result == null)
-        //        return null;
-
-        //    var defaultError = result.Description;
-        //    var message = result.ErrorDetails;
-
-        //    if (message == null)
-        //        return defaultError;
-
-        //    try
-        //    {
-        //        var json = Newtonsoft.Json.JsonConvert.DeserializeObject(message);
-
-        //        var value = ((JObject)json).GetValue("ExceptionMessage");
-
-        //        if (value == null)
-        //            return defaultError;
-
-        //        return value.Value<string>();
-
-        //    }
-        //    catch
-        //    {
-        //        return defaultError;
-        //    }
-        //}
-
         #region Constructor/Execution
         public RealWareApi(RealWareApiConnection connection) : base(connection.BaseUrl)
         {
@@ -236,7 +199,8 @@ namespace RealWare.Core.API
         }
         #endregion
 
-        #region RealAccount
+        #region RealAccount/RealProperty
+#if v5
         /// <summary>
         /// Synchronously gets a real account.
         /// </summary>
@@ -342,6 +306,113 @@ namespace RealWare.Core.API
             string url = $"api/realproperty/{accountNo}/{taxYear}";
             await ExecuteAsync<string>(url, RWHttpVerb.DELETE, cancellationToken).ConfigureAwait(false);
         }
+#else
+        /// <summary>
+        /// Synchronously gets a real account.
+        /// </summary>
+        public RWRealProperty GetRealProperty(string accountNo, string taxYear)
+            => GetRealPropertyAsync(accountNo, taxYear).GetAwaiter().GetResult();
+        /// <summary>
+        /// Gets a real account.
+        /// </summary>
+        public async Task<RWRealProperty> GetRealPropertyAsync(string accountNo, string taxYear, CancellationToken cancellationToken = default)
+        {
+            if (accountNo == null)
+                throw new ArgumentNullException(nameof(accountNo));
+
+            if (taxYear == null)
+                throw new ArgumentNullException(nameof(taxYear));
+
+            string url = $"api/realProperty/{accountNo}/{taxYear}";
+            return await ExecuteAsync<RWRealProperty>(url, RWHttpVerb.GET, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Synchronously gets a real account as a string(json) value.
+        /// </summary>
+        public string GetRealPropertyAsString(string accountNo, string taxYear)
+            => GetRealPropertyAsStringAsync(accountNo, taxYear).GetAwaiter().GetResult();
+        /// <summary>
+        /// Gets a real account as a string(json) value.
+        /// </summary>
+        public async Task<string> GetRealPropertyAsStringAsync(string accountNo, string taxYear, CancellationToken cancellationToken = default)
+        {
+            if (accountNo == null)
+                throw new ArgumentNullException(nameof(accountNo));
+
+            if (taxYear == null)
+                throw new ArgumentNullException(nameof(taxYear));
+
+            string url = $"api/realProperty/{accountNo}/{taxYear}";
+            return await ExecuteAsync<string>(url, RWHttpVerb.GET, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Synchronously updates a real account.
+        /// </summary>
+        public void UpdateRealProperty(RWRealProperty account, string taxYear)
+            => UpdateRealPropertyAsync(account, taxYear).GetAwaiter().GetResult();
+        /// <summary>
+        /// Updates a real account.
+        /// </summary>
+        public async Task UpdateRealPropertyAsync(RWRealProperty account, string taxYear, CancellationToken cancellationToken = default)
+        {
+            if (account == null)
+                throw new ArgumentNullException(nameof(account));
+
+            if (account.AccountNo == null)
+                throw new ArgumentNullException(nameof(account.AccountNo));
+
+            if (taxYear == null)
+                throw new ArgumentNullException(nameof(taxYear));
+
+            string url = $"api/realProperty/{account.AccountNo}/{taxYear}";
+            await ExecuteAsync<string>(url, RWHttpVerb.PUT, account, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Synchronously inserts a real account and returns the new id of the account (if successful).
+        /// </summary>
+        public string InsertRealAccount(RWRealProperty account, string accountNo, string taxYear)
+            => InsertRealPropertyAsync(account, accountNo, taxYear).GetAwaiter().GetResult();
+        /// <summary>
+        /// Inserts a real account and returns the new id of the account (if successful).
+        /// </summary>
+        public async Task<string> InsertRealPropertyAsync(RWRealProperty account, string accountNo, string taxYear, CancellationToken cancellationToken = default)
+        {
+            if (account == null)
+                throw new ArgumentNullException(nameof(account));
+
+            if (account.AccountNo == null)
+                throw new ArgumentNullException(nameof(account.AccountNo));
+
+            if (taxYear == null)
+                throw new ArgumentNullException(nameof(taxYear));
+
+            string url = $"api/realProperty/{accountNo}/{taxYear}";
+            var response = await ExecuteWithResponseAsync(url, RWHttpVerb.POST, account, cancellationToken).ConfigureAwait(false);
+            return getIdFromResponse(response);
+        }
+
+        /// <summary>
+        /// Synchronously deletes a real account.
+        /// </summary>
+        public void DeleteRealProperty(string accountNo, string taxYear)
+            => DeleteRealPropertyAsync(accountNo, taxYear).GetAwaiter().GetResult();
+        /// <summary>
+        /// Deletes a real account.
+        /// </summary>
+        public async Task DeleteRealPropertyAsync(string accountNo, string taxYear, CancellationToken cancellationToken = default)
+        {
+            if (accountNo == null)
+                throw new ArgumentNullException(nameof(accountNo));
+
+            if (taxYear == null)
+                throw new ArgumentNullException(nameof(taxYear));
+
+            string url = $"api/realProperty/{accountNo}/{taxYear}";
+            await ExecuteAsync<string>(url, RWHttpVerb.DELETE, cancellationToken).ConfigureAwait(false);
+        }
+#endif
         #endregion
 
         #region Improvements

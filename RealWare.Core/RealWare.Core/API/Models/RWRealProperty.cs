@@ -1,16 +1,13 @@
-﻿#if v5 || v6
+﻿#if !v5
 
+using RealWare.Core.API.Models.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using RealWare.Core.API.Models.Base;
 
 namespace RealWare.Core.API.Models
 {
-    #if v6
-    [Obsolete("This class is obsolete. Use RWRealProperty instead. This will be removed completely in v7+.")]
-    #endif
-    public class RWRealAccount : RWBase
+    public class RWRealProperty : RWBase
     {
         [Required]
         public RWAccount Account
@@ -275,14 +272,22 @@ namespace RealWare.Core.API.Models
             set;
         }
 
-        public RWRealAccount()
+        public List<RWFlag> Flags
+        {
+            get;
+            set;
+        }
+
+        public RWRealProperty()
         {
             Account = new RWAccount();
             Neighborhoods = new List<RWNeighborhood>();
             LandAbstracts = new List<RWLandAbstract>();
             LandAttributes = new List<RWLandAttribute>();
             NovIncreases = new List<RWNovIncrease>();
+            Flags = new List<RWFlag>();
         }
     }
 }
+
 #endif
