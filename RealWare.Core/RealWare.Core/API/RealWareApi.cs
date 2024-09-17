@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace RealWare.Core.API
 {
@@ -181,7 +182,7 @@ namespace RealWare.Core.API
             string url = $"api/accounts/{accountNo}/{taxYear}/primaryphoto";
             if(order != null)
                 url += $"?order={order}";
-            return await ExecuteAsync<byte[]>(url, RWHttpVerb.GET, cancellationToken).ConfigureAwait(false);
+            return await ExecuteAsync<byte[]>(url, RWHttpVerb.GET, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -195,7 +196,7 @@ namespace RealWare.Core.API
         public async Task<byte[]> GetPrimarySketchPhotoAsync(string accountNo, string taxYear, CancellationToken cancellationToken = default)
         {
             string url = $"api/accounts/{accountNo}/{taxYear}/primarysketch";
-            return await ExecuteAsync<byte[]>(url, RWHttpVerb.GET, cancellationToken).ConfigureAwait(false);
+            return await ExecuteAsync<byte[]>(url, RWHttpVerb.GET, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         #endregion
 
@@ -218,7 +219,7 @@ namespace RealWare.Core.API
                 throw new ArgumentNullException(nameof(taxYear));
 
             string url = $"api/realproperty/{accountNo}/{taxYear}";
-            return await ExecuteAsync<RWRealAccount>(url, RWHttpVerb.GET, cancellationToken).ConfigureAwait(false);
+            return await ExecuteAsync<RWRealAccount>(url, RWHttpVerb.GET, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Synchronously gets a real account as a string(json) value.
@@ -237,7 +238,7 @@ namespace RealWare.Core.API
                 throw new ArgumentNullException(nameof(taxYear));
 
             string url = $"api/realproperty/{accountNo}/{taxYear}";
-            return await ExecuteAsync<string>(url, RWHttpVerb.GET, cancellationToken).ConfigureAwait(false);
+            return await ExecuteAsync<string>(url, RWHttpVerb.GET, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -260,7 +261,7 @@ namespace RealWare.Core.API
                 throw new ArgumentNullException(nameof(taxYear));
 
             string url = $"api/realproperty/{account.AccountNo}/{taxYear}";
-            await ExecuteAsync<string>(url, RWHttpVerb.PUT, account, cancellationToken).ConfigureAwait(false);
+            await ExecuteAsync<string>(url, RWHttpVerb.PUT, account, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -283,7 +284,7 @@ namespace RealWare.Core.API
                 throw new ArgumentNullException(nameof(taxYear));
 
             string url = $"api/realproperty/{accountNo}/{taxYear}";
-            var response = await ExecuteWithResponseAsync(url, RWHttpVerb.POST, account, cancellationToken).ConfigureAwait(false);
+            var response = await ExecuteWithResponseAsync(url, RWHttpVerb.POST, account, cancellationToken: cancellationToken).ConfigureAwait(false);
             return getIdFromResponse(response);
         }
 
@@ -304,7 +305,7 @@ namespace RealWare.Core.API
                 throw new ArgumentNullException(nameof(taxYear));
 
             string url = $"api/realproperty/{accountNo}/{taxYear}";
-            await ExecuteAsync<string>(url, RWHttpVerb.DELETE, cancellationToken).ConfigureAwait(false);
+            await ExecuteAsync<string>(url, RWHttpVerb.DELETE, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 #else
         /// <summary>
@@ -324,7 +325,7 @@ namespace RealWare.Core.API
                 throw new ArgumentNullException(nameof(taxYear));
 
             string url = $"api/realProperty/{accountNo}/{taxYear}";
-            return await ExecuteAsync<RWRealProperty>(url, RWHttpVerb.GET, cancellationToken).ConfigureAwait(false);
+            return await ExecuteAsync<RWRealProperty>(url, RWHttpVerb.GET, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Synchronously gets a real account as a string(json) value.
@@ -343,7 +344,7 @@ namespace RealWare.Core.API
                 throw new ArgumentNullException(nameof(taxYear));
 
             string url = $"api/realProperty/{accountNo}/{taxYear}";
-            return await ExecuteAsync<string>(url, RWHttpVerb.GET, cancellationToken).ConfigureAwait(false);
+            return await ExecuteAsync<string>(url, RWHttpVerb.GET, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -366,7 +367,7 @@ namespace RealWare.Core.API
                 throw new ArgumentNullException(nameof(taxYear));
 
             string url = $"api/realProperty/{account.AccountNo}/{taxYear}";
-            await ExecuteAsync<string>(url, RWHttpVerb.PUT, account, cancellationToken).ConfigureAwait(false);
+            await ExecuteAsync<string>(url, RWHttpVerb.PUT, account, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -389,7 +390,7 @@ namespace RealWare.Core.API
                 throw new ArgumentNullException(nameof(taxYear));
 
             string url = $"api/realProperty/{accountNo}/{taxYear}";
-            var response = await ExecuteWithResponseAsync(url, RWHttpVerb.POST, account, cancellationToken).ConfigureAwait(false);
+            var response = await ExecuteWithResponseAsync(url, RWHttpVerb.POST, account, cancellationToken: cancellationToken).ConfigureAwait(false);
             return getIdFromResponse(response);
         }
 
@@ -410,7 +411,7 @@ namespace RealWare.Core.API
                 throw new ArgumentNullException(nameof(taxYear));
 
             string url = $"api/realProperty/{accountNo}/{taxYear}";
-            await ExecuteAsync<string>(url, RWHttpVerb.DELETE, cancellationToken).ConfigureAwait(false);
+            await ExecuteAsync<string>(url, RWHttpVerb.DELETE, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 #endif
         #endregion
@@ -1254,6 +1255,135 @@ namespace RealWare.Core.API
                 throw new ArgumentNullException(nameof(accountNo));
 
             string url = $"api/sketches/{accountNo}/{improvementNo}/{taxYear}";
+            await ExecuteAsync<string>(url, RWHttpVerb.DELETE, cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+        #endregion
+
+        #region Applications
+        /// <summary>
+        /// Synchronously gets a list of applications for an applicant.
+        /// </summary>
+        public List<RWApplicationApplicant> GetApplications(long applicantId, string taxYear)
+            => GetApplicationsAsync(applicantId, taxYear).GetAwaiter().GetResult();
+        /// <summary>
+        /// Gets a list of applications for an applicant.
+        /// </summary>
+        public async Task<List<RWApplicationApplicant>> GetApplicationsAsync(long applicantId, string taxYear, CancellationToken cancellationToken = default)
+        {
+            if (applicantId <= 0)
+                throw new ArgumentNullException(nameof(applicantId));
+
+            if (taxYear == null)
+                throw new ArgumentNullException(nameof(taxYear));
+
+            string url = $"api/applications/{applicantId}/{taxYear}";
+            return await ExecuteAsync<List<RWApplicationApplicant>>(url, RWHttpVerb.GET, cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Synchronously gets a list of applications for an applicant.
+        /// </summary>
+        public List<RWApplicationApplicant> GetApplications(long applicantId, string accountNo, string taxYear)
+            => GetApplicationsAsync(applicantId, accountNo, taxYear).GetAwaiter().GetResult();
+        /// <summary>
+        /// Gets a list of applications for an applicant.
+        /// </summary>
+        public async Task<List<RWApplicationApplicant>> GetApplicationsAsync(long applicantId, string accountNo, string taxYear, CancellationToken cancellationToken = default)
+        {
+            if (applicantId <= 0)
+                throw new ArgumentNullException(nameof(applicantId));
+
+            if (accountNo == null)
+                throw new ArgumentNullException(nameof(accountNo));
+
+            if (taxYear == null)
+                throw new ArgumentNullException(nameof(taxYear));
+
+            string url = $"api/applications/{applicantId}/{accountNo}/{taxYear}";
+            return await ExecuteAsync<List<RWApplicationApplicant>>(url, RWHttpVerb.GET, cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Synchronously gets a list of applicants.
+        /// </summary>
+        public List<int> GetApplicants(string accountNo, string taxYear)
+            => GetApplicantsAsync(accountNo, taxYear).GetAwaiter().GetResult();
+        /// <summary>
+        /// Gets a list of applicants
+        /// </summary>
+        public async Task<List<int>> GetApplicantsAsync(string accountNo, string taxYear, CancellationToken cancellationToken = default)
+        {
+            if (accountNo == null)
+                throw new ArgumentNullException(nameof(accountNo));
+
+            if (taxYear == null)
+                throw new ArgumentNullException(nameof(taxYear));
+
+            string url = $"api/applications/account/{accountNo}/{taxYear}";
+            return await ExecuteAsync<List<int>>(url, RWHttpVerb.GET, cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Synchronously inserts an application.
+        /// </summary>
+        public string InsertApplication(RWApplication application, string taxYear)
+            => InsertApplicationAsync(application, taxYear).GetAwaiter().GetResult();
+        /// <summary>
+        /// Inserts an application.
+        /// </summary>
+        public async Task<string> InsertApplicationAsync(RWApplication application, string taxYear, CancellationToken cancellationToken = default)
+        {
+            if (application == null)
+                throw new ArgumentNullException(nameof(application));
+
+            if (taxYear == null)
+                throw new ArgumentNullException(nameof(taxYear));
+
+            string url = $"api/applications/{taxYear}";
+            var response = await ExecuteWithResponseAsync(url, RWHttpVerb.POST, application, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return getIdFromResponse(response);
+        }
+
+        /// <summary>
+        /// Synchronously updates application(s) for an applicant.
+        /// </summary>
+        public void UpdateApplicationApplicant(RWApplicationApplicant applicationApplicant, long applicantId, string taxYear)
+            => UpdateApplicationAsync(applicationApplicant, applicantId, taxYear).GetAwaiter().GetResult();
+        /// <summary>
+        /// Updates application(s) for an applicant.
+        /// </summary>
+        public async Task UpdateApplicationAsync(RWApplicationApplicant applicationApplicant, long applicantId, string taxYear, CancellationToken cancellationToken = default)
+        {
+            if (applicationApplicant == null)
+                throw new ArgumentNullException(nameof(applicationApplicant));
+
+            if (applicantId <= 0)
+                throw new ArgumentNullException(nameof(applicantId));
+
+            if (taxYear == null)
+                throw new ArgumentNullException(nameof(taxYear));
+
+            string url = $"api/applications/{applicantId}/{taxYear}";
+            await ExecuteAsync<string>(url, RWHttpVerb.PUT, applicationApplicant, cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Synchronously deletes an applicant and all associated applications.
+        /// </summary>
+        public void DeleteApplications(long applicantId, string taxYear)
+            => DeleteApplicationsAsync(applicantId, taxYear).GetAwaiter().GetResult();
+        /// <summary>
+        /// Deletes an applicant and all associated applications.
+        /// </summary>
+        public async Task DeleteApplicationsAsync(long applicantId, string taxYear, CancellationToken cancellationToken = default)
+        {
+            if (applicantId <= 0)
+                throw new ArgumentNullException(nameof(applicantId));
+
+            if (taxYear == null)
+                throw new ArgumentNullException(nameof(taxYear));
+
+            string url = $"api/applications/{applicantId}/{taxYear}";
             await ExecuteAsync<string>(url, RWHttpVerb.DELETE, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         #endregion
