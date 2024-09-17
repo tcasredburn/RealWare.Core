@@ -3,7 +3,6 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<Configurations>Debug;Release;Debug_v7;Debug_v6;Debug_v5;Release_v5;Release_v6;Release_v7</Configurations>
-		<PackageVersion>1.0.1</PackageVersion>
 	</PropertyGroup>
 
 	<!-- General Package Metadata -->
@@ -14,8 +13,10 @@
 		<PackageTags>RealWare;Encompass;Harris;Tulsa County</PackageTags>
 		<RepositoryUrl>https://github.com/tcasredburn/RealWare.Core</RepositoryUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<AssemblyVersion>2.0.0.0</AssemblyVersion>
-		<FileVersion>2.0.0.0</FileVersion>
+		<AssemblyVersion>2.0.0</AssemblyVersion>
+		<FileVersion>2.0.0</FileVersion>
+		<Readme>README.md</Readme>
+		<PackageVersion>$(AssemblyVersion)</PackageVersion>
 	</PropertyGroup>
 
 	<!-- Define Conditional Symbols for specific realware versions Builds -->
@@ -30,7 +31,7 @@
 		<Optimization>true</Optimization>
 		<OutputPath>bin\Release\v7\</OutputPath>
 		<PackageId>RealWare.Core.v7</PackageId>
-		<Version>$(PackageVersion)-v7</Version>
+		<Version>$(AssemblyVersion)-v7</Version>
 	</PropertyGroup>
 	<!--<PropertyGroup Condition="'$(Configuration)' == 'Debug_v7_1'">
 		<DefineConstants>DEBUG;v7;v7_1</DefineConstants>
@@ -54,7 +55,7 @@
 		<Optimization>true</Optimization>
 		<OutputPath>bin\Release\v6\</OutputPath>
 		<PackageId>RealWare.Core.v6</PackageId>
-		<Version>$(PackageVersion)-v6</Version>
+		<Version>$(AssemblyVersion)-v6</Version>
 	</PropertyGroup>
 	<!--<PropertyGroup Condition="'$(Configuration)' == 'Debug_v6_19'">
 		<DefineConstants>DEBUG;v6</DefineConstants>
@@ -78,7 +79,7 @@
 		<Optimization>true</Optimization>
 		<OutputPath>bin\Release\v5\</OutputPath>
 		<PackageId>RealWare.Core.v5</PackageId>
-		<Version>$(PackageVersion)-v5</Version>
+		<Version>$(AssemblyVersion)-v5</Version>
 	</PropertyGroup>
 	<!--<PropertyGroup Condition="'$(Configuration)' == 'Debug_v5_52'">
 		<DefineConstants>DEBUG;v5;v5_52</DefineConstants>
