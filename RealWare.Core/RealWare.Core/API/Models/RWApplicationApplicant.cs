@@ -8,12 +8,12 @@ namespace RealWare.Core.API.Models
         /// <summary>
         /// Gets or sets the person code.
         /// </summary>
-        public int? PersonCode { get; set; }
+        public long? PersonCode { get; set; }
 
         /// <summary>
         /// Gets or sets the address code.
         /// </summary>
-        public int? AddressCode { get; set; }
+        public long? AddressCode { get; set; }
 
         /// <summary>
         /// Gets or sets the applicant type code.
@@ -23,7 +23,7 @@ namespace RealWare.Core.API.Models
         /// <summary>
         /// Gets or sets the application applicant ID.
         /// </summary>
-        public int ApplicationApplicantID { get; set; }
+        public long ApplicationApplicantID { get; set; }
 
         /// <summary>
         /// Gets or sets the list of applications.

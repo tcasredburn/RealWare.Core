@@ -1,4 +1,5 @@
 ﻿using RealWare.Core.API.Models.Base;
+using System;
 
 namespace RealWare.Core.API.Models
 {
@@ -7,7 +8,7 @@ namespace RealWare.Core.API.Models
         /// <summary>
         /// Gets or sets the application definition ID.
         /// </summary>
-        public int ApplicationDefinitionID { get; set; }
+        public long ApplicationDefinitionID { get; set; }
 
         /// <summary>
         /// Gets or sets the application detail number.
@@ -17,7 +18,7 @@ namespace RealWare.Core.API.Models
         /// <summary>
         /// Gets or sets the application detail date.
         /// </summary>
-        public string ApplicationDetailDate { get; set; }
+        public DateTime? ApplicationDetailDate { get; set; }
 
         /// <summary>
         /// Gets or sets the application detail text.
@@ -32,7 +33,7 @@ namespace RealWare.Core.API.Models
         /// <summary>
         /// Gets or sets the write date.
         /// </summary>
-        public string WriteDate { get; set; }
+        public DateTime? WriteDate { get; set; }
 
         /// <summary>
         /// Default constructor for an application detail row.

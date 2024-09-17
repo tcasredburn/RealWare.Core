@@ -1,4 +1,5 @@
 ﻿using RealWare.Core.API.Models.Base;
+using System;
 using System.Collections.Generic;
 
 namespace RealWare.Core.API.Models
@@ -38,7 +39,7 @@ namespace RealWare.Core.API.Models
         /// <summary>
         /// Gets or sets the start date.
         /// </summary>
-        public string StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the applicant is a resident.
@@ -58,17 +59,17 @@ namespace RealWare.Core.API.Models
         /// <summary>
         /// Gets or sets the mail date.
         /// </summary>
-        public string MailDate { get; set; }
+        public DateTime? MailDate { get; set; }
 
         /// <summary>
         /// Gets or sets the due date.
         /// </summary>
-        public string DueDate { get; set; }
+        public DateTime? DueDate { get; set; }
 
         /// <summary>
         /// Gets or sets the received date.
         /// </summary>
-        public string ReceivedDate { get; set; }
+        public DateTime? ReceivedDate { get; set; }
 
         /// <summary>
         /// Gets or sets the application effective year.
@@ -78,12 +79,12 @@ namespace RealWare.Core.API.Models
         /// <summary>
         /// Gets or sets the write date.
         /// </summary>
-        public string WriteDate { get; set; }
+        public DateTime? WriteDate { get; set; }
 
         /// <summary>
         /// Gets or sets the application applicant ID.
         /// </summary>
-        public int? ApplicationApplicantId { get; set; }
+        public long? ApplicationApplicantId { get; set; }
 
         /// <summary>
         /// Gets or sets the application process status.
