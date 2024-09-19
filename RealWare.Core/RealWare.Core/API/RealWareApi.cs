@@ -1263,12 +1263,12 @@ namespace RealWare.Core.API
         /// <summary>
         /// Synchronously gets a list of applications for an applicant.
         /// </summary>
-        public List<RWApplicationApplicant> GetApplications(long applicantId, string taxYear)
+        public RWApplicationApplicant GetApplication(long applicantId, string taxYear)
             => GetApplicationsAsync(applicantId, taxYear).GetAwaiter().GetResult();
         /// <summary>
         /// Gets a list of applications for an applicant.
         /// </summary>
-        public async Task<List<RWApplicationApplicant>> GetApplicationsAsync(long applicantId, string taxYear, CancellationToken cancellationToken = default)
+        public async Task<RWApplicationApplicant> GetApplicationsAsync(long applicantId, string taxYear, CancellationToken cancellationToken = default)
         {
             if (applicantId <= 0)
                 throw new ArgumentNullException(nameof(applicantId));
@@ -1277,18 +1277,18 @@ namespace RealWare.Core.API
                 throw new ArgumentNullException(nameof(taxYear));
 
             string url = $"api/applications/{applicantId}/{taxYear}";
-            return await ExecuteAsync<List<RWApplicationApplicant>>(url, RWHttpVerb.GET, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await ExecuteAsync<RWApplicationApplicant>(url, RWHttpVerb.GET, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Synchronously gets a list of applications for an applicant.
         /// </summary>
-        public List<RWApplicationApplicant> GetApplications(long applicantId, string accountNo, string taxYear)
+        public RWApplicationApplicant GetApplications(long applicantId, string accountNo, string taxYear)
             => GetApplicationsAsync(applicantId, accountNo, taxYear).GetAwaiter().GetResult();
         /// <summary>
         /// Gets a list of applications for an applicant.
         /// </summary>
-        public async Task<List<RWApplicationApplicant>> GetApplicationsAsync(long applicantId, string accountNo, string taxYear, CancellationToken cancellationToken = default)
+        public async Task<RWApplicationApplicant> GetApplicationsAsync(long applicantId, string accountNo, string taxYear, CancellationToken cancellationToken = default)
         {
             if (applicantId <= 0)
                 throw new ArgumentNullException(nameof(applicantId));
@@ -1300,7 +1300,7 @@ namespace RealWare.Core.API
                 throw new ArgumentNullException(nameof(taxYear));
 
             string url = $"api/applications/{applicantId}/{accountNo}/{taxYear}";
-            return await ExecuteAsync<List<RWApplicationApplicant>>(url, RWHttpVerb.GET, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await ExecuteAsync<RWApplicationApplicant>(url, RWHttpVerb.GET, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
