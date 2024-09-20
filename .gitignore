@@ -396,3 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/RealWare.Core/RealWare.Core.Tests/local-configuration.json
