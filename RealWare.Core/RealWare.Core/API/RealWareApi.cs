@@ -1386,5 +1386,33 @@ namespace RealWare.Core.API
             await ExecuteAsync<string>(url, RWHttpVerb.DELETE, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         #endregion
+
+        #region Option Data
+        /// <summary>
+        /// Synchronously gets the option data for the specified resource.
+        /// </summary>
+        public List<RWOptionData> GetOptionData(OptionDataResourceName resourceName)
+            => GetOptionDataAsync(resourceName).GetAwaiter().GetResult();
+
+        /// <inheritdoc cref="GetOptionDataAsync(OptionDataResourceName,CancellationToken)"/>
+        public async Task<List<RWOptionData>> GetOptionDataAsync(string resourceName, CancellationToken cancellationToken = default)
+        {
+            if (Enum.TryParse(Enum.GetName(typeof(OptionDataResourceName), resourceName), out OptionDataResourceName resource))
+            {
+                return await GetOptionDataAsync(resource, cancellationToken).ConfigureAwait(false);
+            }
+            else
+                throw new ArgumentException($"Failed to parse {nameof(resourceName)} as a valid {nameof(OptionDataResourceName)} value.");
+        }
+        /// <summary>
+        /// Gets the option data for the specified resource.
+        /// </summary>
+        public async Task<List<RWOptionData>> GetOptionDataAsync(OptionDataResourceName resourceName, CancellationToken cancellationToken = default)
+        {
+            string actualResourceName = Enum.GetName(typeof(OptionDataResourceName), resourceName);
+            string url = $"api/optiondata/{actualResourceName}";
+            return await ExecuteAsync<List<RWOptionData>>(url, RWHttpVerb.GET, cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+        #endregion
     }
 }
