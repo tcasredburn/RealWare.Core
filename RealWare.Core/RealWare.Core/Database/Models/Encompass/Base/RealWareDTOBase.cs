@@ -1,6 +1,7 @@
 ﻿namespace RealWare.Core.Database.Models.Encompass.Base
 {
-    public class RealWareDtoBase
-    {
-    }
+    /// <summary>
+    /// Base object for all RealWare database objects.
+    /// </summary>
+    public class RealWareDtoBase { }
 }

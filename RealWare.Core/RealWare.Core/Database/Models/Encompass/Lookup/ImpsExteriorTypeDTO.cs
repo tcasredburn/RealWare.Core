@@ -15,6 +15,9 @@ namespace RealWare.Core.Database.Models.Encompass.Lookup
         public decimal JurisdictionId { get; set; }
         public DateTime LastUpdated { get; set; }
 
+        /// <summary>
+        /// Returns true if the ActiveFlag is not 0
+        /// </summary>
         public bool IsActive => ActiveFlag != 0;
     }
 }
