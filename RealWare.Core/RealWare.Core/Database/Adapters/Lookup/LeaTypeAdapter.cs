@@ -5,7 +5,7 @@ using System.Data;
 
 namespace RealWare.Core.Database.Adapters.Lookup
 {
-    public class LeaTypeAdapter : BaseRealWareDatabaseAdapter, IRealWareDatabaseAdapter
+    public class LEATypeAdapter : BaseRealWareDatabaseAdapter, IRealWareDatabaseAdapter
     {
         public string TableName => "Encompass.TlkpLeaType";
 
@@ -13,7 +13,7 @@ namespace RealWare.Core.Database.Adapters.Lookup
 
         public string[] SortColums => new string[] { "SortOrder" };
 
-        public LeaTypeAdapter(IDbConnection connection) : base(connection) { }
+        public LEATypeAdapter(IDbConnection connection) : base(connection) { }
 
         public List<LEATypeDto> GetAllActive()
         {

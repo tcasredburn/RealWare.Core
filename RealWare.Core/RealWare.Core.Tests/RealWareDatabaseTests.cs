@@ -102,7 +102,7 @@ namespace RealWare.Core.Tests
         [TestMethod]
         public void LeaTypeAdapter_GetAllActive_ShouldReturnValues()
         {
-            var adapter = new LeaTypeAdapter(sqlConnection);
+            var adapter = new LEATypeAdapter(sqlConnection);
 
             var result = adapter.GetAllActive();
 
