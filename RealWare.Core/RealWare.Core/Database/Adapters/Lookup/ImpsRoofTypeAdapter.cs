@@ -20,6 +20,7 @@ namespace RealWare.Core.Database.Adapters.Lookup
             var whereClause = new string[] { "ActiveFlag != 0" };
             var query = GetDefaultSelectQueryText(this,
                 selectColumns: null,
+                isDistinct: true,
                 whereClause: whereClause,
                 orderBy: SortColums);
 

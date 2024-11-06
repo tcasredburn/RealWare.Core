@@ -29,6 +29,7 @@ namespace RealWare.Core.Database.Adapters.Lookup
 
             var query = GetDefaultSelectQueryText(this,
                 selectColumns: null,
+                isDistinct: true,
                 whereClause: whereClause,
                 orderBy: SortColums);
 

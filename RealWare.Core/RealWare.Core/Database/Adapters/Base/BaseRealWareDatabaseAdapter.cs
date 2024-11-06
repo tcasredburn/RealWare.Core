@@ -15,7 +15,8 @@ namespace RealWare.Core.Database.Adapters.Base
         }
 
         public string GetDefaultSelectQueryText(IRealWareDatabaseAdapter adapter, 
-            string[] selectColumns = null, string[] whereClause = null, string[] orderBy = null)
+            string[] selectColumns = null, string[] whereClause = null, string[] orderBy = null,
+            bool isDistinct = false)
         {
             string selectColumnsText = 
                 selectColumns == null 
@@ -33,7 +34,7 @@ namespace RealWare.Core.Database.Adapters.Base
                 : "ORDER BY " + string.Join(", ", orderBy);
 
             return $@"
-                SELECT {selectColumnsText}
+                SELECT {(isDistinct ? "DISTINCT" : "")} {selectColumnsText}
                 FROM {adapter.TableName}
                 WHERE {whereClauseText}
                 {orderByText}";
