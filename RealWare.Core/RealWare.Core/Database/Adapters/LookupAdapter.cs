@@ -6,7 +6,7 @@ namespace RealWare.Core.Database.Adapters
 {
     public class LookupAdapter : BaseRealWareDatabaseAdapter
     {
-        public readonly EconomicAreaAdapter EconomicAreaAdapter;
+        public readonly EconomicAreaAdapter EconomicArea;
         public readonly ImpsConditionTypeAdapter ImpsConditionType;
         public readonly ImpsExteriorTypeAdapter ImpsExteriorType;
         public readonly ImpsQualityAdapter ImpsQuality;
@@ -19,7 +19,7 @@ namespace RealWare.Core.Database.Adapters
 
         public LookupAdapter(IDbConnection connection) : base(connection)
         {
-            EconomicAreaAdapter = new EconomicAreaAdapter(connection);
+            EconomicArea = new EconomicAreaAdapter(connection);
             ImpsConditionType = new ImpsConditionTypeAdapter(connection);
             ImpsExteriorType = new ImpsExteriorTypeAdapter(connection);
             ImpsQuality = new ImpsQualityAdapter(connection);
