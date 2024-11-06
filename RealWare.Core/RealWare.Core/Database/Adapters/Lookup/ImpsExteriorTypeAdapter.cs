@@ -2,6 +2,7 @@
 using RealWare.Core.Database.Models.Encompass.Lookup;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 
 namespace RealWare.Core.Database.Adapters.Lookup
 {
@@ -9,7 +10,7 @@ namespace RealWare.Core.Database.Adapters.Lookup
     {
         public string TableName => "Encompass.TlkpImpsExteriorType";
 
-        public string[] IdentifierColumns => new string[] { "PropertyType", "ImpQuality", "ImpExterior" };
+        public string[] IdentifierColumns => new string[] { "PropertyType", "ImpQuality", "ImpExterior", "TaxYear", "JurisdictionId" };
 
         public string[] SortColums => new string[] { "SortOrder" };
 
@@ -18,11 +19,11 @@ namespace RealWare.Core.Database.Adapters.Lookup
         public List<ImpsExteriorTypeDto> GetAllActive(string taxYear = null)
         {
             Dictionary<string, object> parameters = null;
-            string[] whereClause = null;
+            string[] whereClause = new string[] { "ActiveFlag != 0" };
 
             if (taxYear != null)
             {
-                whereClause = new string[] { "TaxYear = @TaxYear" };
+                whereClause = whereClause.Concat(new string[] { "TaxYear = @TaxYear" }).ToArray();
                 parameters = new Dictionary<string, object> {{ "@TaxYear", taxYear }};
             }
 
