@@ -1,4 +1,5 @@
 ﻿using RealWare.Core.Database.Adapters.Lookup;
+using RealWare.Core.Database.Adapters.Table;
 using RealWare.Core.Tests.Setup;
 using System.Data.SqlClient;
 
@@ -141,6 +142,61 @@ namespace RealWare.Core.Tests
 
             Assert.IsNotNull(result, "No result returned.");
             Assert.IsTrue(result.TrueForAll(x => x.IsActive), "Should only be active status.");
+        }
+
+
+        [TestMethod]
+        [DataRow(null)]
+        [DataRow("2024")]
+        public void AcctPropertyAddressAdapter_GetAllByAccountNo_ShouldReturnValues(string taxYear)
+        {
+            var testAccountNo = TestSetup.Config.TestAccountNo;
+
+            var adapter = new AcctPropertyAddressAdapter(sqlConnection);
+
+            var result = adapter.GetAllByAccountNo(testAccountNo, taxYear);
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.Count > 0, "No result returned.");
+            Assert.IsTrue(result.First().AccountNo == testAccountNo, "Account number does not match.");
+        }
+
+        [TestMethod]
+        [DataRow(null)]
+        [DataRow("2024")]
+        public void AcctPropertyAddressAdapter_GetByAccountNo_ShouldReturnSingleValue(string taxYear)
+        {
+            var testAccountNo = TestSetup.Config.TestAccountNo;
+
+            var adapter = new AcctPropertyAddressAdapter(sqlConnection);
+
+            var result = adapter.GetByAccountNo(testAccountNo, taxYear);
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.AccountNo == testAccountNo, "Account number does not match.");
+        }
+
+        [TestMethod]
+        [DataRow("2024")]
+        public void AcctPropertyAddressAdapter_GetByAccountNo_GetFormattedAddress(string taxYear)
+        {
+            var testAccountNo = TestSetup.Config.TestAccountNo;
+
+            var adapter = new AcctPropertyAddressAdapter(sqlConnection);
+
+            var result = adapter.GetByAccountNo(testAccountNo, taxYear);
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.AccountNo == testAccountNo, "Account number does not match.");
+
+            var formattedAddress = result.GetFormattedAddress();
+            Assert.IsTrue(formattedAddress.Length > 3, "No formatted address returned.");
+
+            var formattedStreetAddress = result.GetFormattedStreetAddress();
+            Assert.IsTrue(formattedStreetAddress.Length > 3, "No formatted street address returned.");
+
+            var formattedCityZip = result.GetFormattedCityZip();
+            Assert.IsTrue(formattedCityZip.Length > 3, "No formatted city/zip returned.");
         }
     }
 }

@@ -14,6 +14,7 @@ namespace RealWare.Core.Tests.Setup.Models
 
         // Test values
         public int TestTaxYear { get; set; }
+        public string TestAccountNo { get; set; }
 
         internal static LocalConfigurationModel GetDefault()
         {
