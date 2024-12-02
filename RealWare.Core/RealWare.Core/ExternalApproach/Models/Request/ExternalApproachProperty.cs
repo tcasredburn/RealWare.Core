@@ -42,7 +42,7 @@ namespace RealWare.Core.ExternalApproach.Models.Request
         public double ImpAmateurAdjPct { get; set; }
         public int ImpNetSf { get; set; }
         public string PropertyType { get; set; }
-        public string ApproAchType { get; set; }
+        public string ApproachType { get; set; }
         public string Impsot0 { get; set; }
         public string Impsot1 { get; set; }
         public string Impsom0 { get; set; }
