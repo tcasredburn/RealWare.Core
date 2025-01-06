@@ -198,5 +198,37 @@ namespace RealWare.Core.Tests
             var formattedCityZip = result.GetFormattedCityZip();
             Assert.IsTrue(formattedCityZip.Length > 3, "No formatted city/zip returned.");
         }
+
+        #region Appeal
+        [TestMethod]
+        [DataRow(null)]
+        [DataRow("2024")]
+        public void AppealAcctAdapter_GetAllByAccountNo_ShouldReturnValues(string taxYear)
+        {
+            var testAccountNo = TestSetup.Config.TestAppealAccountNo;
+
+            var adapter = new AppealAcctAdapter(sqlConnection);
+
+            var result = adapter.GetAllByAccountNo(testAccountNo, taxYear);
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.Count > 0, "No result returned.");
+            Assert.IsTrue(result.First().AccountNo == testAccountNo, "Account number does not match.");
+        }
+
+        [TestMethod]
+        [DataRow("2024")]
+        public void AppealAdapter_GetByAppealNo_ShouldReturnValue(string taxYear)
+        {
+            var testAppealNo = TestSetup.Config.TestAppealNo;
+
+            var adapter = new AppealAdapter(sqlConnection);
+
+            var result = adapter.GetByAppealNo(testAppealNo, taxYear);
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.AppealNo == testAppealNo, "Appeal number does not match.");
+        }
+        #endregion
     }
 }
