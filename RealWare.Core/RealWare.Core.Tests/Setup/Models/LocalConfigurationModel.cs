@@ -17,6 +17,8 @@ namespace RealWare.Core.Tests.Setup.Models
         public string TestAccountNo { get; set; }
         public string TestAppealAccountNo { get; set; }
         public decimal TestAppealNo { get; set; }
+        public decimal TestAddressCode { get; set; }
+        public decimal TestPersonCode { get; set; }
 
         internal static LocalConfigurationModel GetDefault()
         {

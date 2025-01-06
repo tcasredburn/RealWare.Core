@@ -230,5 +230,35 @@ namespace RealWare.Core.Tests
             Assert.IsTrue(result.AppealNo == testAppealNo, "Appeal number does not match.");
         }
         #endregion
+
+        #region Ownership
+        [TestMethod]
+        public void AddressAdapter_GetByAddressCode_ShouldReturnValues()
+        {
+            var testAddressCode = TestSetup.Config.TestAddressCode;
+            var testTaxYear = TestSetup.Config.TestTaxYear;
+
+            var adapter = new AddressAdapter(sqlConnection);
+
+            var result = adapter.GetByAddressCode(testAddressCode, testTaxYear);
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.AddressCode == testAddressCode, "Address code does not match.");
+        }
+
+        [TestMethod]
+        public void PersonAdapter_GetByPersonCode_ShouldReturnValues()
+        {
+            var testPersonCode = TestSetup.Config.TestPersonCode;
+            var testTaxYear = TestSetup.Config.TestTaxYear;
+
+            var adapter = new PersonAdapter(sqlConnection);
+
+            var result = adapter.GetByPersonCode(testPersonCode, testTaxYear);
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.PersonCode == testPersonCode, "Person code does not match.");
+        }
+        #endregion
     }
 }
