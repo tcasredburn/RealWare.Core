@@ -65,7 +65,7 @@ namespace RealWare.Core.Database.Adapters.Table
                 whereClause: whereClause,
                 orderBy: SortColums);
 
-            return ExecuteQuery<AcctPropertyAddressDto>(query, parameters).FirstOrDefault();
+            return ExecuteQuery<AcctPropertyAddressDto>(query, parameters)?.FirstOrDefault();
         }
     }
 }
