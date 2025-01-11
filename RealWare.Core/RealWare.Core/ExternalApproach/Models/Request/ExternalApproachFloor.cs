@@ -4,7 +4,7 @@ namespace RealWare.Core.ExternalApproach.Models.Request
 {
     public class ExternalApproachFloor
     {
-        public int DetailId { get; set; }
+        public long DetailId { get; set; }
         public string AccountNo { get; set; }
         public double ImpNo { get; set; }
         public int BltAsCode { get; set; }

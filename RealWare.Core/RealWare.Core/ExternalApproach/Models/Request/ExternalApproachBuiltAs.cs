@@ -9,7 +9,7 @@ namespace RealWare.Core.ExternalApproach.Models.Request
         {
             Floors = new List<ExternalApproachFloor>();
         }
-        public int DetailId { get; set; }
+        public long DetailId { get; set; }
         public string AccountNo { get; set; }
         public double ImpNo { get; set; }
         public int BltAsCode { get; set; }

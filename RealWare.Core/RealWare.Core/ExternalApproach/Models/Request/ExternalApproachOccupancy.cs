@@ -4,7 +4,7 @@ namespace RealWare.Core.ExternalApproach.Models.Request
 {
     public class ExternalApproachOccupancy
     {
-        public int DetailId { get; set; }
+        public long DetailId { get; set; }
         public string AccountNo { get; set; }
         public double ImpNo { get; set; }
         public long OccCode { get; set; }
