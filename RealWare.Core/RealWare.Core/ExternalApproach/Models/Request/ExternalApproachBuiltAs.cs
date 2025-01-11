@@ -64,8 +64,8 @@ namespace RealWare.Core.ExternalApproach.Models.Request
         public long SeqId { get; set; }
         public long? ApexId { get; set; }
         public double? ExternalCostValue { get; set; }
-        public double MHExternalMakeId { get; set; }
-        public double MHExternalModelId { get; set; }
+        public double? MHExternalMakeId { get; set; }
+        public double? MHExternalModelId { get; set; }
         public List<ExternalApproachFloor> Floors { get; set; }
         public List<object> Units { get; set; }
     }

@@ -27,7 +27,7 @@ namespace RealWare.Core.ExternalApproach.Models.Request
         public string MHDecalNo { get; set; }
         public string MHTagNo { get; set; }
         public string Appraiser { get; set; }
-        public DateTime AppraisalDate { get; set; }
+        public DateTime? AppraisalDate { get; set; }
         public int OwnerOccupiedFlag { get; set; }
         public string CostMethod { get; set; }
         public string MarketMethod { get; set; }
@@ -46,14 +46,14 @@ namespace RealWare.Core.ExternalApproach.Models.Request
         public string Impsot0 { get; set; }
         public string Impsot1 { get; set; }
         public string Impsom0 { get; set; }
-        public DateTime? Impsom1 { get; set; }
+        public string Impsom1 { get; set; }
         public DateTime? Impsod0 { get; set; }
-        public double? Impsod1 { get; set; }
+        public DateTime? Impsod1 { get; set; }
         public double? Impson0 { get; set; }
         public double? Impson1 { get; set; }
         public double? Impson2 { get; set; }
         public DateTime? WriteDate { get; set; }
-        public int SeqId { get; set; }
+        public long SeqId { get; set; }
         public List<ExternalApproachOccupancy> Occupancies { get; set; }
         public List<ExternalApproachBuiltAs> BuiltAs { get; set; }
         public List<object> Details { get; set; }
