@@ -24,6 +24,32 @@ namespace RealWare.Core.Tests
         [TestMethod]
         [DataRow(null)]
         [DataRow("2024")]
+        public void AcctPropertyAddressAdapter_GetAllDistinctCities_ShouldReturnValues(string taxYear)
+        {
+            var adapter = new AcctPropertyAddressAdapter(sqlConnection);
+
+            var result = adapter.GetAllDistinctCities(taxYear);
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.Count > 0, "Should have atleast 1 value.");
+        }
+
+        [TestMethod]
+        [DataRow(null)]
+        [DataRow("2024")]
+        public void AcctPropertyAddressAdapter_GetAllDistinctZipCodes_ShouldReturnValues(string taxYear)
+        {
+            var adapter = new AcctPropertyAddressAdapter(sqlConnection);
+
+            var result = adapter.GetAllDistinctZipCodes(taxYear);
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.Count > 0, "Should have atleast 1 value.");
+        }
+
+        [TestMethod]
+        [DataRow(null)]
+        [DataRow("2024")]
         public void ImpsConditionTypeAdapter_GetAllActive_ShouldReturnValues(string taxYear)
         {
             var adapter = new ImpsConditionTypeAdapter(sqlConnection);

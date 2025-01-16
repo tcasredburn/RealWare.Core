@@ -3,6 +3,9 @@ using RealWare.Core.Database.Models.Encompass.Table;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using RealWare.Core.Database.Extensions;
+using RealWare.Core.Database.Helpers;
+using System;
 
 namespace RealWare.Core.Database.Adapters.Table
 {
@@ -66,6 +69,62 @@ namespace RealWare.Core.Database.Adapters.Table
                 orderBy: SortColums);
 
             return ExecuteQuery<AcctPropertyAddressDto>(query, parameters)?.FirstOrDefault();
+        }
+
+        public List<string> GetAllDistinctCities(string taxYear = null)
+        {
+            var parameters = new Dictionary<string, object>();
+            string[] whereClause = null;
+            var returnColumn = new string[] { nameof(AcctPropertyAddressDto.PropertyCity) };
+
+            if (taxYear != null)
+            {
+                whereClause = new string[] { "@Version between apa.VERSTART and apa.VEREND" };
+                parameters.Add("@Version", $"{taxYear}1231999");
+            }
+
+            var activeOnlyJoin = RealWareSqlJoinsHelper.GetActiveAccountOnlyJoin(
+                sourceAccountAliasAndName: "apa.AccountNo", 
+                version: parameters.Count() == 0 ? $"{DateTime.Now.Year}1231999" : "@Version");
+
+            var query = GetDefaultSelectQueryText(
+                this,
+                selectColumns: returnColumn,
+                isDistinct: true,
+                alias: "apa",
+                joins: new[] { activeOnlyJoin },
+                whereClause: whereClause,
+                orderBy: returnColumn);
+
+            return ExecuteQuery<AcctPropertyAddressDto>(query, parameters).Select(x=>x.PropertyCity).ToList();
+        }
+
+        public List<string> GetAllDistinctZipCodes(string taxYear = null)
+        {
+            var parameters = new Dictionary<string, object>();
+            string[] whereClause = null;
+            var returnColumn = new string[] { nameof(AcctPropertyAddressDto.PropertyZipCode) };
+
+            if (taxYear != null)
+            {
+                whereClause = new string[] { "@Version between apa.VERSTART and apa.VEREND" };
+                parameters.Add("@Version", $"{taxYear}1231999");
+            }
+
+            var activeOnlyJoin = RealWareSqlJoinsHelper.GetActiveAccountOnlyJoin(
+                sourceAccountAliasAndName: "apa.AccountNo",
+                version: parameters.Count() == 0 ? $"{DateTime.Now.Year}1231999" : "@Version");
+
+            var query = GetDefaultSelectQueryText(
+                this,
+                selectColumns: returnColumn,
+                isDistinct: true,
+                alias: "apa",
+                joins: new[] { activeOnlyJoin },
+                whereClause: whereClause,
+                orderBy: returnColumn);
+
+            return ExecuteQuery<AcctPropertyAddressDto>(query, parameters).Select(x => x.PropertyZipCode).ToList();
         }
     }
 }

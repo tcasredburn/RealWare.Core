@@ -15,13 +15,22 @@ namespace RealWare.Core.Database.Adapters.Base
         }
 
         public string GetDefaultSelectQueryText(IRealWareDatabaseAdapter adapter, 
-            string[] selectColumns = null, string[] whereClause = null, string[] orderBy = null,
+            string[] selectColumns = null,
+            string[] joins = null,
+            string[] whereClause = null, 
+            string[] orderBy = null,
+            string alias = null,
             bool isDistinct = false)
         {
             string selectColumnsText = 
                 selectColumns == null 
                 ? "*" 
                 : string.Join(", ", selectColumns);
+
+            string joinsText =
+                joins == null
+                ? ""
+                : string.Join(Environment.NewLine, joins);
 
             string whereClauseText =
                 whereClause == null
@@ -35,7 +44,8 @@ namespace RealWare.Core.Database.Adapters.Base
 
             return $@"
                 SELECT {(isDistinct ? "DISTINCT" : "")} {selectColumnsText}
-                FROM {adapter.TableName}
+                FROM {adapter.TableName} {(alias == null ? "" : alias)}
+                {joinsText}
                 WHERE {whereClauseText}
                 {orderByText}";
         }
