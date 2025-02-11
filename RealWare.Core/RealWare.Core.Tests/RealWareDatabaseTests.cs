@@ -22,6 +22,30 @@ namespace RealWare.Core.Tests
         }
 
         [TestMethod]
+        [DataRow("2024")]
+        public void AcctAdapter_GetAllByTaxYear_ShouldReturnValues(string taxYear)
+        {
+            var adapter = new AcctAdapter(sqlConnection);
+
+            var result = adapter.GetAllByTaxYear(taxYear);
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.Count > 0, "Should have atleast 1 value.");
+        }
+
+        [TestMethod]
+        [DataRow("R81804841567600","2024")]
+        public void AcctAdapter_GetByAccountNo_ShouldReturnValue(string accountNo, string taxYear)
+        {
+            var adapter = new AcctAdapter(sqlConnection);
+
+            var result = adapter.GetByAccountNo(accountNo, taxYear);
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.AccountNo == accountNo, "Account number should match.");
+        }
+
+        [TestMethod]
         [DataRow(null)]
         [DataRow("2024")]
         public void AcctPropertyAddressAdapter_GetAllDistinctCities_ShouldReturnValues(string taxYear)
