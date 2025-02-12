@@ -9,6 +9,7 @@ namespace RealWare.Core.Database.Adapters
         public readonly AcctAdapter Acct;
         public readonly AcctPropertyAddressAdapter AcctPropertyAddress;
         public readonly AppealAdapter Appeal;
+        public readonly AppealAcctAdapter AppealAcct;
         public readonly AddressAdapter Address;
         public readonly PersonAdapter Person;
 
@@ -17,6 +18,7 @@ namespace RealWare.Core.Database.Adapters
             Acct = new AcctAdapter(connection);
             AcctPropertyAddress = new AcctPropertyAddressAdapter(connection);
             Appeal = new AppealAdapter(connection);
+            AppealAcct = new AppealAcctAdapter(connection);
             Address = new AddressAdapter(connection);
             Person = new PersonAdapter(connection);
         }
