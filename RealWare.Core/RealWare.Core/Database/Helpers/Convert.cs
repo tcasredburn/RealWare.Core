@@ -215,7 +215,7 @@ namespace RealWare.Core.Database.Helpers
 
                         prop.SetValue(newT, safeValue, null);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         // Optionally log the exception
                         prop.SetValue(newT, null, null);
