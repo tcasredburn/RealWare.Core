@@ -13,15 +13,15 @@ namespace RealWare.Core.Database.Models.Encompass.Table
         public decimal? AppealAdjustDenyReasonId { get; set; }
         public string AppealComment { get; set; }
         public decimal? AppealAccountEndValue { get; set; }
-        public decimal? AppealAcctNo0 { get; set; }
-        public decimal? AppealAcctNo1 { get; set; }
-        public decimal? AppealAcctNo2 { get; set; }
-        public DateTime? AppealAcctDo0 { get; set; }
-        public DateTime? AppealAcctDo1 { get; set; }
-        public string AppealAcctOm0 { get; set; }
-        public string AppealAcctOm1 { get; set; }
-        public string AppealAcctOt0 { get; set; }
-        public string AppealAcctOt1 { get; set; }
+        public decimal? AppealAcctON0 { get; set; }
+        public decimal? AppealAcctON1 { get; set; }
+        public decimal? AppealAcctON2 { get; set; }
+        public DateTime? AppealAcctOD0 { get; set; }
+        public DateTime? AppealAcctOD1 { get; set; }
+        public string AppealAcctOM0 { get; set; }
+        public string AppealAcctOM1 { get; set; }
+        public string AppealAcctOT0 { get; set; }
+        public string AppealAcctOT1 { get; set; }
         public decimal JurisdictionId { get; set; }
         public string AppealDecision { get; set; }
         public DateTime? WriteDate { get; set; }

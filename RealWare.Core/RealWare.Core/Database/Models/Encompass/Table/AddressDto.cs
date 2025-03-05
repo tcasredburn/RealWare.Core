@@ -16,18 +16,18 @@ namespace RealWare.Core.Database.Models.Encompass.Table
         public string ZipCode { get; set; }
         public decimal? PersonCode { get; set; }
         public string Province { get; set; }
-        public decimal? AddressNo { get; set; }
-        public decimal? AddressOn1 { get; set; }
-        public decimal? AddressOn2 { get; set; }
+        public decimal? AddressON0 { get; set; }
+        public decimal? AddressON1 { get; set; }
+        public decimal? AddressON2 { get; set; }
         public decimal JurisdictionId { get; set; }
         public string Country { get; set; }
         public string PostalCode { get; set; }
-        public DateTime? AddressDo0 { get; set; }
-        public DateTime? AddressDo1 { get; set; }
-        public string AddressOm0 { get; set; }
-        public string AddressOm1 { get; set; }
-        public string AddressOt0 { get; set; }
-        public string AddressOt1 { get; set; }
+        public DateTime? AddressOD0 { get; set; }
+        public DateTime? AddressOD1 { get; set; }
+        public string AddressOM0 { get; set; }
+        public string AddressOM1 { get; set; }
+        public string AddressOT0 { get; set; }
+        public string AddressOT1 { get; set; }
         public decimal AddressValidFlag { get; set; }
         public DateTime? WriteDate { get; set; }
         public decimal PrivateFlag { get; set; }

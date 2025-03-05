@@ -28,12 +28,14 @@ namespace RealWare.Core.Database.Models.Encompass.Table
         public DateTime? TaxpayerMeetingDate { get; set; }
         public string TaxpayerMeetingTime { get; set; }
         public decimal? BeginningAppealValue { get; set; }
-        public decimal? AppealOn1 { get; set; }
-        public decimal? AppealOn2 { get; set; }
-        public DateTime? AppealOdo0 { get; set; }
-        public DateTime? AppealOd1 { get; set; }
-        public string AppealOm1 { get; set; }
-        public string AppealOlTo { get; set; }
+        public decimal? AppealON1 { get; set; }
+        public decimal? AppealON2 { get; set; }
+        public DateTime? AppealOD0 { get; set; }
+        public DateTime? AppealOD1 { get; set; }
+        public string AppealOM0 { get; set; }
+        public string AppealOM1 { get; set; }
+        public string AppealOT0 { get; set; }
+        public string AppealOT1 { get; set; }
         public string AppraisalType { get; set; }
         public string PrimaryAccount { get; set; }
         public decimal JurisdictionId { get; set; }

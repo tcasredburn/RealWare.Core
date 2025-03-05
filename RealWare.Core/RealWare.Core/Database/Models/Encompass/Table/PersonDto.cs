@@ -18,16 +18,16 @@ namespace RealWare.Core.Database.Models.Encompass.Table
         public string EmailAddress { get; set; }
         public string FederalIdNo { get; set; }
         public decimal PrivateFlag { get; set; }
-        public decimal? PersonOn0 { get; set; }
-        public decimal? PersonOn1 { get; set; }
-        public decimal? PersonOn2 { get; set; }
+        public decimal? PersonON0 { get; set; }
+        public decimal? PersonON1 { get; set; }
+        public decimal? PersonON2 { get; set; }
         public string AltName1 { get; set; }
-        public DateTime? PersonDo0 { get; set; }
-        public DateTime? PersonDo1 { get; set; }
-        public string PersonOm0 { get; set; }
-        public string PersonOm1 { get; set; }
-        public string PersonOt0 { get; set; }
-        public string PersonOt1 { get; set; }
+        public DateTime? PersonOD0 { get; set; }
+        public DateTime? PersonOD1 { get; set; }
+        public string PersonOM0 { get; set; }
+        public string PersonOM1 { get; set; }
+        public string PersonOT0 { get; set; }
+        public string PersonOT1 { get; set; }
         public DateTime? WriteDate { get; set; }
         public decimal PersonTypeId { get; set; }
         public decimal JurisdictionId { get; set; }

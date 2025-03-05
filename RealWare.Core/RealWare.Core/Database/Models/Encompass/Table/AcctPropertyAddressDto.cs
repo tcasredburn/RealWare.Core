@@ -19,14 +19,15 @@ namespace RealWare.Core.Database.Models.Encompass.Table
         public string PropertyZipCode { get; set; }
         public string PropertyCity { get; set; }
         public decimal OrderNo { get; set; }
-        public decimal AcctPropertyAddressNo { get; set; }
-        public decimal AcctPropertyAddressNo1 { get; set; }
-        public decimal AcctPropertyAddressNo2 { get; set; }
+        public decimal AcctPropertyAddressON0 { get; set; }
+        public decimal AcctPropertyAddressON1 { get; set; }
+        public decimal AcctPropertyAddressON2 { get; set; }
         public string BusinessName { get; set; }
-        public string AcctPropertyAddress0 { get; set; }
+        public string AcctPropertyAddressN0 { get; set; }
+        public string AcctPropertyAddressN1 { get; set; }
         public DateTime? AcctPropertyAddressD0 { get; set; }
         public DateTime? AcctPropertyAddressD1 { get; set; }
-        public decimal? AcctPropertyAddressO0 { get; set; }
+        public decimal? AcctPropertyAddressOM0 { get; set; }
         public string AcctPropertyAddressOM1 { get; set; }
         public string AcctPropertyAddressOT0 { get; set; }
         public string AcctPropertyAddressOT1 { get; set; }
