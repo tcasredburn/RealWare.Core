@@ -5,7 +5,7 @@ namespace RealWare.Core.ExternalApproach.Models.Result
     /// <summary>
     /// Result returned from the External Cost Approach service.
     /// </summary>
-    public class CostExternalMarketApproachResult
+    public class CostExternalApproachResult
     {
         public string AccountNo { get; set; }
         public double? ImpNo { get; set; }
