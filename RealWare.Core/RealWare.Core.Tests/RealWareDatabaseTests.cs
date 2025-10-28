@@ -1,5 +1,7 @@
 ﻿using RealWare.Core.Database.Adapters.Lookup;
 using RealWare.Core.Database.Adapters.Table;
+using RealWare.Core.Database.Adapters.TableN;
+using RealWare.Core.Database.Models.Encompass.TableN;
 using RealWare.Core.Tests.Setup;
 using System.Data.SqlClient;
 
@@ -319,6 +321,75 @@ namespace RealWare.Core.Tests
 
             Assert.IsNotNull(result, "No result returned.");
             Assert.IsTrue(result.PersonCode == testPersonCode, "Person code does not match.");
+        }
+        #endregion
+
+        #region TableN
+        [TestMethod]
+        [DataRow(2025)]
+        public void AdminAdapter_GetAllByTaxYear_ShouldReturnValues(int taxYear)
+        {
+            var adapter = new AdminAdapter(sqlConnection);
+
+            var result = adapter.GetAllByTaxYear(taxYear);
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.Count() > 0, "Should have atleast one value.");
+        }
+        [TestMethod]
+        [DataRow(2025000001)]
+        public void AdminAdapter_GetAllByAdminNo_ShouldReturnValue(long adminNo)
+        {
+            var adapter = new AdminAdapter(sqlConnection);
+
+            var result = adapter.GetAllByAdminNo(adminNo);
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.AdminNo == adminNo, "Invalid criteria.");
+        }
+        [TestMethod]
+        [DataRow(2025000001)]
+        public void AdminHeaderAdapter_GetAllByAdminNo_ShouldReturnValues(long adminNo)
+        {
+            var adapter = new AdminHeaderAdapter(sqlConnection);
+
+            var result = adapter.GetAllByAdminNo(adminNo);
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.Count() > 0, "Should have atleast one value.");
+        }
+        [TestMethod]
+        [DataRow("R81804841567600")]
+        public void AdminHeaderAdapter_GetAllByAccountNo_ShouldReturnValues(string accountNo)
+        {
+            var adapter = new AdminHeaderAdapter(sqlConnection);
+
+            var result = adapter.GetAllByAccountNo(accountNo);
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.Count() > 0, "Should have atleast one value.");
+        }
+        [TestMethod]
+        [DataRow("R81804841567600")]
+        public void AdminHeaderAdapter_GetMostRecentNOVByAccountNo_ShouldReturnValue(string accountNo)
+        {
+            var adapter = new AdminHeaderAdapter(sqlConnection);
+
+            var result = adapter.GetMostRecentNOVByAccountNo(accountNo);
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.AccountNo == accountNo, "Account # should match.");
+        }
+        [TestMethod]
+        [DataRow(2025)]
+        public void AdminHeaderAdapter_GetAllNOVByTaxYear_ShouldReturnValue(int taxYear)
+        {
+            var adapter = new AdminHeaderAdapter(sqlConnection);
+
+            var result = adapter.GetAllNOVByTaxYear(taxYear);
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.Count() > 0, "Should have atleast one value.");
         }
         #endregion
     }
