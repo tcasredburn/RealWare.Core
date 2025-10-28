@@ -11,6 +11,7 @@ namespace RealWare.Core.Database.Adapters
         public readonly EconomicAreaAdapter EconomicArea;
         public readonly ImpsConditionTypeAdapter ImpsConditionType;
         public readonly ImpsExteriorTypeAdapter ImpsExteriorType;
+        public readonly ImpsOccTypeAdapter ImpsOccType;
         public readonly ImpsQualityAdapter ImpsQuality;
         public readonly ImpsResRoofCoverTypeAdapter ImpsResRoofCoverType;
         public readonly ImpsRoofTypeAdapter ImpsRoofType;
@@ -28,6 +29,7 @@ namespace RealWare.Core.Database.Adapters
             EconomicArea = new EconomicAreaAdapter(connection);
             ImpsConditionType = new ImpsConditionTypeAdapter(connection);
             ImpsExteriorType = new ImpsExteriorTypeAdapter(connection);
+            ImpsOccType = new ImpsOccTypeAdapter(connection);
             ImpsQuality = new ImpsQualityAdapter(connection);
             ImpsResRoofCoverType = new ImpsResRoofCoverTypeAdapter(connection);
             ImpsRoofType = new ImpsRoofTypeAdapter(connection);

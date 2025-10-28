@@ -103,5 +103,9 @@
 	<ItemGroup>
 		<None Include="README.md" Pack="true" PackagePath="" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Database\Adapters\TableN\" />
+	  <Folder Include="Database\Models\Encompass\TableN\" />
+	</ItemGroup>
 
 </Project>

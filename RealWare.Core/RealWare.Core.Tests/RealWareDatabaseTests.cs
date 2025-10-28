@@ -98,6 +98,17 @@ namespace RealWare.Core.Tests
         }
 
         [TestMethod]
+        public void ImpsOccTypeAdapter_GetAllActive_ShouldReturnValues()
+        {
+            var adapter = new ImpsOccTypeAdapter(sqlConnection);
+
+            var result = adapter.GetAllActive();
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.TrueForAll(x => x.IsActive), "Should only be active status.");
+        }
+
+        [TestMethod]
         public void ImpsQualityAdapter_GetAllActive_ShouldReturnValues()
         {
             var adapter = new ImpsQualityAdapter(sqlConnection);
