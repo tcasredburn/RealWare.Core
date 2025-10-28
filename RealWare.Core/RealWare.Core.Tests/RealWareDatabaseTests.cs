@@ -386,7 +386,7 @@ namespace RealWare.Core.Tests
         {
             var adapter = new AdminHeaderAdapter(sqlConnection);
 
-            var result = adapter.GetAllNOVByTaxYear(taxYear);
+            var result = adapter.GetAllMostRecentNOVByTaxYear(taxYear);
 
             Assert.IsNotNull(result, "No result returned.");
             Assert.IsTrue(result.Count() > 0, "Should have atleast one value.");

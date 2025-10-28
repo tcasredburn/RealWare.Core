@@ -1,5 +1,6 @@
 ﻿using RealWare.Core.Database.Adapters.Base;
 using RealWare.Core.Database.Models.Encompass.TableN;
+using System;
 using System.Collections.Generic;
 using System.Data;
 
@@ -89,7 +90,7 @@ namespace RealWare.Core.Database.Adapters.TableN
             return results.Count > 0 ? results[0] : null;
         }
 
-        public List<AdminHeaderDto> GetAllNOVByTaxYear(int taxYear, int?[] allowedStatusAdminId = null)
+        public List<AdminHeaderMostRecentNOVDto> GetAllMostRecentNOVByTaxYear(int taxYear, int?[] allowedStatusAdminId = null)
         {
             var parameters = new Dictionary<string, object> { { "@TaxYear", taxYear } };
 
@@ -97,15 +98,15 @@ namespace RealWare.Core.Database.Adapters.TableN
                 allowedStatusAdminId = new int?[] { 5 }; // Default to Printed
 
             string query = @"
-                SELECT TOP(1) ah.*
+                SELECT AccountNo, MAX(NOTICEDATE) MostRecentNOVDate, MAX(ah.ADMINNO) AdminNo
                 FROM ASRPROD.ENCOMPASS.TBNADMIN a
                 INNER JOIN ASRPROD.ENCOMPASS.TBNADMINHEADER ah on a.ADMINNO = ah.ADMINNO
                 WHERE ADMINPROCESSTYPEID IN (1, 4) -- 1=REAL NOV, 4=PERSONAL NOV
                     AND TAXYEAR = @TAXYEAR 
                     AND STATUSADMINID IN (" + string.Join(",", allowedStatusAdminId) + @")
-                ORDER BY NOTICEDATE DESC";
+                GROUP BY ACCOUNTNO";
 
-            return ExecuteQuery<AdminHeaderDto>(query, parameters);
+            return ExecuteQuery<AdminHeaderMostRecentNOVDto>(query, parameters);
         }
     }
 }
