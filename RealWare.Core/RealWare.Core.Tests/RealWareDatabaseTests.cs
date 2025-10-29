@@ -262,6 +262,50 @@ namespace RealWare.Core.Tests
             Assert.IsTrue(formattedCityZip.Length > 3, "No formatted city/zip returned.");
         }
 
+        [TestMethod]
+        public void PropertyClassAdapter_GetAll_ShouldReturnValues()
+        {
+            var adapter = new PropertyClassAdapter(sqlConnection);
+
+            var result = adapter.GetAll();
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.Count() > 0, "Should have atleast one value.");
+        }
+
+        [TestMethod]
+        public void PropertyClassAdapter_GetAllActive_ShouldReturnValues()
+        {
+            var adapter = new PropertyClassAdapter(sqlConnection);
+
+            var result = adapter.GetAllActive();
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.Count() > 0, "Should have atleast one value.");
+        }
+
+        [TestMethod]
+        public void PrimaryUseCodeAdapter_GetAll_ShouldReturnValues()
+        {
+            var adapter = new PrimaryUseCodeAdapter(sqlConnection);
+
+            var result = adapter.GetAll();
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.Count() > 0, "Should have atleast one value.");
+        }
+
+        [TestMethod]
+        public void PrimaryUseCodeAdapter_GetAllActive_ShouldReturnValues()
+        {
+            var adapter = new PrimaryUseCodeAdapter(sqlConnection);
+
+            var result = adapter.GetAllActive();
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.Count() > 0, "Should have atleast one value.");
+        }
+
         #region Appeal
         [TestMethod]
         [DataRow(null)]

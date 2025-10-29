@@ -18,6 +18,8 @@ namespace RealWare.Core.Database.Adapters
         public readonly LEATypeAdapter LEAType;
         public readonly NbhdAdjustmentAdapter NbhdAdjustment;
         public readonly OptionFieldAdapter OptionField;
+        public readonly PrimaryUseCodeAdapter PrimaryUseCode;
+        public readonly PropertyClassAdapter PropertyClass;
         public readonly SaleConfirmMethodAdapter SaleConfirmMethod;
         public readonly SaleExcludeAdapter SaleExclude;
         public readonly ValueAreaAdapter ValueArea;
@@ -36,6 +38,8 @@ namespace RealWare.Core.Database.Adapters
             LEAType = new LEATypeAdapter(connection);
             NbhdAdjustment = new NbhdAdjustmentAdapter(connection);
             OptionField = new OptionFieldAdapter(connection);
+            PrimaryUseCode = new PrimaryUseCodeAdapter(connection);
+            PropertyClass = new PropertyClassAdapter(connection);
             SaleConfirmMethod = new SaleConfirmMethodAdapter(connection);
             SaleExclude = new SaleExcludeAdapter(connection);
             ValueArea = new ValueAreaAdapter(connection);
