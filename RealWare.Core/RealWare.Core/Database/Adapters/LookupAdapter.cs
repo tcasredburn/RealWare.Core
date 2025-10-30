@@ -6,6 +6,7 @@ namespace RealWare.Core.Database.Adapters
 {
     public class LookupAdapter : BaseRealWareDatabaseAdapter
     {
+        public readonly ApproachTypeAdapter ApproachType;
         public readonly DeedTypeAdapter DeedType;
         public readonly DocumentTypeAdapter DocumentType;
         public readonly EconomicAreaAdapter EconomicArea;
@@ -26,6 +27,7 @@ namespace RealWare.Core.Database.Adapters
 
         public LookupAdapter(IDbConnection connection) : base(connection)
         {
+            ApproachType = new ApproachTypeAdapter(connection);
             DeedType = new DeedTypeAdapter(connection);
             DocumentType = new DocumentTypeAdapter(connection);
             EconomicArea = new EconomicAreaAdapter(connection);
