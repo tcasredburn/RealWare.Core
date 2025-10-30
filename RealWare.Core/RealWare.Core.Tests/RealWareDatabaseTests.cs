@@ -263,6 +263,28 @@ namespace RealWare.Core.Tests
         }
 
         [TestMethod]
+        public void ApproachTypeAdapter_GetAll_ShouldReturnValues()
+        {
+            var adapter = new ApproachTypeAdapter(sqlConnection);
+
+            var result = adapter.GetAll();
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.Count() > 0, "Should have atleast one value.");
+        }
+
+        [TestMethod]
+        public void ApproachTypeAdapter_GetAllActive_ShouldReturnValues()
+        {
+            var adapter = new ApproachTypeAdapter(sqlConnection);
+
+            var result = adapter.GetAllActive();
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.Count() > 0, "Should have atleast one value.");
+        }
+
+        [TestMethod]
         public void PropertyClassAdapter_GetAll_ShouldReturnValues()
         {
             var adapter = new PropertyClassAdapter(sqlConnection);
