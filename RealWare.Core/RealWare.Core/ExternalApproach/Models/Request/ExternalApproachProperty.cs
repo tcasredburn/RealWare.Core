@@ -54,11 +54,11 @@ namespace RealWare.Core.ExternalApproach.Models.Request
         public double? Impson2 { get; set; }
         public DateTime? WriteDate { get; set; }
         public long SeqId { get; set; }
-        public List<ExternalApproachOccupancy> Occupancies { get; set; }
-        public List<ExternalApproachBuiltAs> BuiltAs { get; set; }
-        public List<object> Details { get; set; }
-        public List<object> AddOns { get; set; }
-        public List<object> UserDetails { get; set; }
-        public List<object> DetachedGarages { get; set; }
+        public List<ExternalApproachOccupancy> Occupancies { get; set; } = new List<ExternalApproachOccupancy>();
+        public List<ExternalApproachBuiltAs> BuiltAs { get; set; } = new List<ExternalApproachBuiltAs>();
+        public List<ExternalApproachGeneralDetail> Details { get; set; } = new List<ExternalApproachGeneralDetail>();
+        public List<ExternalApproachAddOn> AddOns { get; set; } = new List<ExternalApproachAddOn>();
+        public List<ExternalApproachUserDetail> UserDetails { get; set; } = new List<ExternalApproachUserDetail>();
+        public List<ExternalApproachDetachedGarage> DetachedGarages { get; set; } = new List<ExternalApproachDetachedGarage>();
     }
 }
