@@ -7,11 +7,13 @@ namespace RealWare.Core.Database.Adapters
     {
         public readonly LookupAdapter Lookup;
         public readonly TableAdapter Table;
+        public readonly TableNAdapter TableN;
 
         public EncompassAdapter(IDbConnection connection) : base(connection)
         {
             Lookup = new LookupAdapter(connection);
             Table = new TableAdapter(connection);
+            TableN = new TableNAdapter(connection);
         }
     }
 }
