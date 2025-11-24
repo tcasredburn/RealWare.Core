@@ -13,7 +13,7 @@
 		<PackageTags>RealWare;Encompass;Harris;Tulsa County</PackageTags>
 		<RepositoryUrl>https://github.com/tcasredburn/RealWare.Core</RepositoryUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<AssemblyVersion>2.1.32</AssemblyVersion>
+		<AssemblyVersion>2.1.33</AssemblyVersion>
 		<FileVersion>2.1.33</FileVersion>
 		<Readme>README.md</Readme>
 		<PackageVersion>$(AssemblyVersion)</PackageVersion>
