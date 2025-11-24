@@ -1,7 +1,6 @@
 ﻿using RealWare.Core.Database.Adapters.Lookup;
 using RealWare.Core.Database.Adapters.Table;
 using RealWare.Core.Database.Adapters.TableN;
-using RealWare.Core.Database.Models.Encompass.TableN;
 using RealWare.Core.Tests.Setup;
 using System.Data.SqlClient;
 
@@ -21,6 +20,18 @@ namespace RealWare.Core.Tests
 
             // Create API class
             sqlConnection = new SqlConnection(TestSetup.Config.RealWareDatabaseConnectionString);
+        }
+
+        [TestMethod]
+        [DataRow("2026")]
+        public void AcctAdapter_GetAllDistinctAccountNoByTaxYear_ShouldReturnValues(string taxYear)
+        {
+            var adapter = new AcctAdapter(sqlConnection);
+
+            var result = adapter.GetAllUniqueKeysByTaxYear(taxYear, true);
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.Count > 0, "Should have atleast 1 value.");
         }
 
         [TestMethod]

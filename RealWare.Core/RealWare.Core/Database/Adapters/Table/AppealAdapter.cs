@@ -1,4 +1,5 @@
 ﻿using RealWare.Core.Database.Adapters.Base;
+using RealWare.Core.Database.Models;
 using RealWare.Core.Database.Models.Encompass.Table;
 using System.Collections.Generic;
 using System.Data;
@@ -26,7 +27,32 @@ namespace RealWare.Core.Database.Adapters.Table
             return ExecuteQuery<AppealDto>(query);
         }
 
+        public List<KeyResultDto> GetAllUniqueKeysByTaxYear(decimal taxYear)
+        {
+            var selectClause = new string[] { "AppealNo AS KeyValue", "'APPEALNO' AS KeyType" };
+            var whereClause = new string[]
+            {
+                "TaxYear = @TaxYear" ,
+                "@Version between VERSTART and VEREND"
+            };
+            var parameters = new Dictionary<string, object>
+            {
+                { "@TaxYear", taxYear },
+                { "@Version", $"{taxYear}1231999" }
+            };
+
+            var query = GetDefaultSelectQueryText(this,
+                selectColumns: selectClause,
+                isDistinct: true,
+                whereClause: whereClause,
+                orderBy: SortColums);
+
+            return ExecuteQuery<KeyResultDto>(query, parameters);
+        }
+
         public List<AppealDto> GetAllByTaxYear(decimal taxYear)
+            => GetAllByTaxYear(taxYear.ToString());
+        public List<AppealDto> GetAllByTaxYear(string taxYear)
         {
             var whereClause = new string[] 
             { 
