@@ -28,6 +28,8 @@ namespace RealWare.Core.Database.Adapters.Table
         }
 
         public List<KeyResultDto> GetAllUniqueKeysByTaxYear(decimal taxYear)
+            => GetAllUniqueKeysByTaxYear(taxYear.ToString());
+        public List<KeyResultDto> GetAllUniqueKeysByTaxYear(string taxYear)
         {
             var selectClause = new string[] { "AppealNo AS KeyValue", "'APPEALNO' AS KeyType" };
             var whereClause = new string[]

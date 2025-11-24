@@ -11,7 +11,9 @@ namespace RealWare.Core.Database.Adapters
         public readonly AppealAdapter Appeal;
         public readonly AppealAcctAdapter AppealAcct;
         public readonly AddressAdapter Address;
+        public readonly PermitAdapter Permit;
         public readonly PersonAdapter Person;
+        public readonly SaleAdapter Sale;
 
         public TableAdapter(IDbConnection connection) : base(connection)
         {
@@ -20,7 +22,9 @@ namespace RealWare.Core.Database.Adapters
             Appeal = new AppealAdapter(connection);
             AppealAcct = new AppealAcctAdapter(connection);
             Address = new AddressAdapter(connection);
+            Permit = new PermitAdapter(connection);
             Person = new PersonAdapter(connection);
+            Sale = new SaleAdapter(connection);
         }
     }
 }
