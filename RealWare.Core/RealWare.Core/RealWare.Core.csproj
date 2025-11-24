@@ -14,7 +14,7 @@
 		<RepositoryUrl>https://github.com/tcasredburn/RealWare.Core</RepositoryUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<AssemblyVersion>2.1.32</AssemblyVersion>
-		<FileVersion>2.1.32</FileVersion>
+		<FileVersion>2.1.33</FileVersion>
 		<Readme>README.md</Readme>
 		<PackageVersion>$(AssemblyVersion)</PackageVersion>
 	</PropertyGroup>

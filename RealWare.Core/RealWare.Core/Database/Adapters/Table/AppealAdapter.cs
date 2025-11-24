@@ -47,7 +47,7 @@ namespace RealWare.Core.Database.Adapters.Table
                 selectColumns: selectClause,
                 isDistinct: true,
                 whereClause: whereClause,
-                orderBy: SortColums);
+                orderBy: new string[] { "KeyValue" });
 
             return ExecuteQuery<KeyResultDto>(query, parameters);
         }
