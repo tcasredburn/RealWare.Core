@@ -23,6 +23,7 @@ namespace RealWare.Core.Database.Adapters
         public readonly PropertyClassAdapter PropertyClass;
         public readonly SaleConfirmMethodAdapter SaleConfirmMethod;
         public readonly SaleExcludeAdapter SaleExclude;
+        public readonly TaxDistrictAdapter TaxDistrict;
         public readonly ValueAreaAdapter ValueArea;
 
         public LookupAdapter(IDbConnection connection) : base(connection)
@@ -44,6 +45,7 @@ namespace RealWare.Core.Database.Adapters
             PropertyClass = new PropertyClassAdapter(connection);
             SaleConfirmMethod = new SaleConfirmMethodAdapter(connection);
             SaleExclude = new SaleExcludeAdapter(connection);
+            TaxDistrict = new TaxDistrictAdapter(connection);
             ValueArea = new ValueAreaAdapter(connection);
         }
     }

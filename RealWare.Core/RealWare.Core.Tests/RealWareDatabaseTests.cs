@@ -47,6 +47,17 @@ namespace RealWare.Core.Tests
         }
 
         [TestMethod]
+        public void TaxDistrictAdapter_GetAllActive_ShouldReturnValues()
+        {
+            var adapter = new TaxDistrictAdapter(sqlConnection);
+
+            var result = adapter.GetAllActive();
+
+            Assert.IsNotNull(result, "No result returned.");
+            Assert.IsTrue(result.Count > 0, "Should have atleast 1 value.");
+        }
+
+        [TestMethod]
         [DataRow("R81804841567600","2024")]
         public void AcctAdapter_GetByAccountNo_ShouldReturnValue(string accountNo, string taxYear)
         {
